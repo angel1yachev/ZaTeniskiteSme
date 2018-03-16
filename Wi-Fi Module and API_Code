@@ -1,0 +1,127 @@
+#include <ESP8266WiFi.h>
+#define LED D3
+#define LED1 D4
+#define LED2 D2
+const char* ssid = "alexpc"; //give yours
+const char* password = "12345678";
+ 
+WiFiServer server(80);
+ 
+void setup() {
+  pinMode(LED,OUTPUT);
+  pinMode(LED1,OUTPUT);
+  pinMode(LED2,OUTPUT);
+
+  Serial.begin(115200);
+  delay(10);
+ 
+
+ 
+  // Connect to WiFi network
+  Serial.println();
+  Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+ 
+  WiFi.begin(ssid, password);
+ 
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("");
+  Serial.println("WiFi connected");
+ 
+  // Start the server
+  server.begin();
+  Serial.println("Server started");
+ 
+  // Print the IP address
+  Serial.print("Use this URL to connect: ");
+  Serial.print("http://");
+  Serial.print(WiFi.localIP());
+  Serial.println("/");
+ 
+}
+ 
+void loop() {
+  digitalWrite(LED2,HIGH);
+  // Check if a client has connected
+  WiFiClient client = server.available();
+  if (!client) {
+    return;
+  }
+ 
+  // Wait until the client sends some data
+  Serial.println("new client");
+  while(!client.available()){
+    delay(1);
+  }
+ 
+  // Read the first line of the request
+  String request = client.readStringUntil('\r');
+  Serial.println(request);
+  client.flush();
+ 
+  // Match the request
+ 
+  String value="";
+ 
+  
+  if (request.indexOf("/FORWARD") != -1)  {
+      digitalWrite(LED,HIGH);
+      digitalWrite(LED1,LOW );
+      
+    value ="FORWARD";
+  }
+   if (request.indexOf("/BACKWARD") != -1)  {
+      digitalWrite(LED,LOW);
+      digitalWrite(LED1,HIGH );
+      
+    value ="BACKWARD";
+  }
+  if (request.indexOf("/STOP") != -1)  {
+      digitalWrite(LED,LOW );
+      digitalWrite(LED1,LOW);
+      
+    value ="STOP";
+  }
+  
+ 
+ 
+// Set ledPin according to the request
+//digitalWrite(ledPin, value);
+ 
+  // Return the response
+  client.println("HTTP/1.1 200 OK");
+  client.println("Content-Type: text/html");
+  client.println(""); //  do not forget this one
+  client.println("<!DOCTYPE HTML>");
+  client.println("<html>");
+
+ 
+  if(value=="FORWARD")
+  {
+    client.print("FORWARD");
+  }
+  else if(value=="BACKWARD")
+  {
+    client.print("BACKWARD");
+  }
+  else if(value=="STOP")
+  {
+    client.print("STOP");
+  }
+  
+  client.println("<br><br>");
+  client.print("<body style=background-color:green>");
+  client.println("<a href=\"/FORWARD\"\"><button>FORWARD </button></a><br />"); 
+  client.println("<a href=\"/BACKWARD\"\"><button>BACKWARD </button></a><br />"); 
+  client.println("<a href=\"/STOP\"\"><button>STOP </button></a><br />"); 
+  client.println("</html>");
+ 
+  delay(1);
+  Serial.println("Client disonnected");
+  Serial.println("");
+ 
+}
