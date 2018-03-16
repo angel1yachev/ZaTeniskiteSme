@@ -1,0 +1,22 @@
+#include <ESP8266WiFi.h>
+#include <Servo.h>
+#define LED D3
+#define LED1 D4
+Servo myservo; // create servo object to control a servo 
+// a maximum of eight servo objects can be created 
+ 
+ // variable to store the servo position 
+ 
+void setup() 
+{ 
+  pinMode(LED, OUTPUT);
+  pinMode(LED1, OUTPUT);
+  
+} 
+ 
+void loop() 
+{ 
+    digitalWrite(LED, HIGH);
+    digitalWrite(LED1, LOW);
+  
+}
