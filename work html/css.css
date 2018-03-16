@@ -1,0 +1,192 @@
+.bg-1 {
+    background-image: url(home.jpg);
+    color: #ffffff;
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: table;
+    background-attachment: fixed;
+	
+	
+
+ }
+ 
+ .bg-2 { 
+    background-image: url(about.jpg);
+	height: 100vh;
+    width: 100%;
+    background-size: cover;
+    display: table;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+	max-height: 500px;
+	
+  }
+.bg-3 { 
+    background-image: url(como.jpg);
+	height: 100vh;
+    width: 100%;
+    background-size: cover;
+    display: table;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+	max-height: 500px;
+  }
+.bg-4 { 
+	background-color: #2f2f2f;
+    color: #ffffff;
+
+}
+.bg-5 { 
+   background-color:rgba(0,0,0,0.5);
+
+	font-weight: bold;
+	
+}
+
+@media only screen and (min-device-width: 480px) and (max-device-width: 800px) { // testvah dizaina na razlichnite ustroistva
+    .bg-1 {
+        background-image: url(480.jpg);
+		
+    }
+
+	
+	
+}
+body {
+    font: 20px "Montserrat", sans-serif;
+    line-height: 1.8;
+}
+
+
+
+
+
+
+
+
+.button1 {
+			box-shadow: 0 5px 5px 0 ), 0 17px 50px 0 rgba(0,0,0,0.19);
+            background-color: Transparent;
+            background-repeat:no-repeat;
+            border: none;
+            cursor:pointer;
+            overflow: hidden;
+			padding:0px;
+			-webkit-transition-duration: 0.4s;
+			letter-spacing:9px;
+			font-size:39px;
+			text-transform:uppercase;
+			color:black;
+			width: 500px;
+			position: static;
+		
+			position: absolute;
+			top:230px;
+			left:750px;
+
+			border: 3px solid black;
+        }
+.button1:hover {
+    box-shadow: 0 15px 15px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	border: 5px solid black;
+}
+
+ .bg-5 h1{
+	font-size: 50px;
+	color:white;
+	text-transform:uppercase;
+	letter-spacing:9px;
+	font-weight: bold;
+	text-align: center;
+}
+ .bg-5 p{
+	font-size: 15px;
+	color:white;
+	letter-spacing:2px;
+	font-weight: bold;
+	text-align: center;
+	
+}
+.bg-3 p{
+	color:orange;
+	font-size:30px;
+	font-weight: bold;
+	letter-spacing:4px;
+	display:block;
+}
+.bg-3 h3{
+	font-size: 50px;
+	color:white;
+	text-transform:uppercase;
+	letter-spacing:9px;
+	font-weight: bold;
+}
+
+.buttons{
+	color:black;
+	background-color:orange;
+	font-size:30px;
+	width:300px;
+	border:1px solid orange;
+	font-family:fantasy;
+	letter-spacing:2px;
+}
+
+.bg-4 p{
+	font-size: 16px;
+	
+}
+
+
+
+
+ .bg-4.container-fluid  {
+      padding-top: 50px;
+      padding-bottom: 50px;
+  }
+
+
+  .navbar {
+      
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 17px;
+      letter-spacing: 3px;
+
+  }
+  .nav.navbar-nav.navbar-right li a {
+    color: white;
+	font-weight:bold;
+	
+	
+}
+
+.navbar-inverse .navbar-header .navbar-brand {
+    color: #e8e8e8;
+	font-weight:bold;
+	letter-spacing: 5px;
+	font-size: 19px;
+}
+
+.bg-9 .project {
+	 margin-right: 7px;
+
+}
+
+.bg-9 {
+	background-image: url(c.jpg);
+	
+    
+}
+.bg-10{
+	margin-bottom: 25px;
+	margin-top: 420px;
+	background-color:white;
+	width: 70%;
+	
+	
+    
+}
