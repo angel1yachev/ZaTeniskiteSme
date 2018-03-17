@@ -1,0 +1,84 @@
+#define LED D3
+#define LED1 D4
+#define LED2 D2
+#define LED3 D5
+
+int pos = 0;
+
+#include <ESP8266WiFi.h>
+#include <Servo.h>
+Servo servo1;
+
+WiFiClient client;
+WiFiServer server(80);
+
+
+const char* ssid = "alexpc";
+const char* password = "123456789";
+
+String  data =""; 
+
+
+void setup()
+{
+  pinMode(LED, OUTPUT);
+  pinMode(LED1, OUTPUT); 
+  pinMode(LED2, OUTPUT);  
+  pinMode(LED3, OUTPUT);
+  servo1.attach(0);
+  server.begin();
+}
+
+void loop()
+{
+  servo1.write(0);
+    
+  client = server.available();
+  if (!client) return; 
+      data = checkClient ();
+    
+
+
+    if (data == "forward") MotorForward();
+      else 
+        if (data == "backward") MotorBackward();
+          else
+            if (data == "stop") MotorStop();
+    
+} 
+
+
+void MotorForward(void)   
+{
+      digitalWrite(LED,LOW);
+      digitalWrite(LED1,HIGH );
+      digitalWrite(LED2,HIGH);
+      digitalWrite(LED3,LOW);
+}
+
+
+void MotorBackward(void)   
+{
+      digitalWrite(LED,HIGH);
+      digitalWrite(LED1,LOW);
+      digitalWrite(LED3,LOW);
+      digitalWrite(LED3,HIGH);
+}
+
+
+
+void MotorStop(void)   
+{
+      digitalWrite(LED,LOW );
+      digitalWrite(LED1,LOW);
+}
+
+
+String checkClient (void)
+{
+  while(!client.available()) delay(1); 
+  String request = client.readStringUntil('\r');
+  request.remove(0, 5);
+  request.remove(request.length()-9,9);
+  return request;
+}
