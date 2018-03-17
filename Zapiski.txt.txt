@@ -1,0 +1,14 @@
+ zapiski
+ sli.do - anonimni wuprosi nqkuw wuprosnik
+ danil.iordanov@yahoo.com 0897530735
+ 
+ 10.2
+ nqma da e mnogo opredelena promenlivata 
+	let count=5;
+	var - the old 1 
+	konwecii w js- zapochwat s malka bukwa     da ne e samo s edna duma s gl bukwa 
+												countofcars nope countOfCars  
+	number NaN?
+	
+	djudje raboti s txt   let data = Number(a);
+	
